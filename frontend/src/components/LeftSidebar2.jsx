@@ -12,7 +12,7 @@ export default function LeftSidebar() {
   const [activeList, setActiveList] = useState(1);
 
   return (
-    <div className="w-58 h-screen bg-green-100 border-r border-gray-200 flex flex-col my-3 rounded-r-xl text-sm shadow-md">
+    <div className="w-58 h-screen bg-green-100 border-r border-gray-200 flex flex-col my-3 rounded-r-xl text-sm shadow-m">
       <div className="p-2 flex justify-center">
         <h1 className="text-2xl font-bold text-gray-800">Todo App</h1>
       </div>
