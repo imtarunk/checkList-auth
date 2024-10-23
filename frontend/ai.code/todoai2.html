@@ -1,0 +1,293 @@
+<html>
+<head>
+    <title>Task Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <aside class="w-1/4 bg-white p-4">
+            <div class="mb-6">
+                <h2 class="text-lg font-semibold mb-4">Private</h2>
+                <ul>
+                    <li class="flex items-center justify-between mb-2">
+                        <span class="flex items-center">
+                            <span class="mr-2">🏠</span>
+                            Home
+                        </span>
+                        <span>8</span>
+                    </li>
+                    <li class="flex items-center justify-between mb-2">
+                        <span class="flex items-center">
+                            <span class="mr-2">🔵</span>
+                            Completed
+                        </span>
+                        <span>16</span>
+                    </li>
+                    <li class="flex items-center justify-between mb-2">
+                        <span class="flex items-center">
+                            <span class="mr-2">🔵</span>
+                            Personal
+                        </span>
+                        <span>4</span>
+                    </li>
+                    <li class="flex items-center justify-between mb-2">
+                        <span class="flex items-center">
+                            <span class="mr-2">🔵</span>
+                            Work
+                        </span>
+                        <span>6</span>
+                    </li>
+                    <li class="flex items-center justify-between mb-2">
+                        <span class="flex items-center">
+                            <span class="mr-2">💪</span>
+                            Diet
+                        </span>
+                        <span>3</span>
+                    </li>
+                    <li class="flex items-center justify-between mb-2">
+                        <span class="flex items-center">
+                            <span class="mr-2">📚</span>
+                            List of Book
+                        </span>
+                        <span>8</span>
+                    </li>
+                    <li class="flex items-center justify-between mb-2">
+                        <span class="flex items-center">
+                            <span class="mr-2">🚗</span>
+                            Road trip list
+                        </span>
+                        <span>6</span>
+                    </li>
+                </ul>
+                <button class="flex items-center mt-4 text-gray-500">
+                    <i class="fas fa-plus mr-2"></i> Create new list
+                </button>
+            </div>
+            <div>
+                <h2 class="text-lg font-semibold mb-4">Group</h2>
+                <div class="flex mb-4">
+                    <div class="w-1/2 p-2">
+                        <div class="bg-gray-200 p-4 rounded-lg">
+                            <div class="flex items-center mb-2">
+                                <div class="w-8 h-8 bg-yellow-400 rounded-full mr-2"></div>
+                                <div class="w-8 h-8 bg-blue-400 rounded-full mr-2"></div>
+                                <div class="w-8 h-8 bg-red-400 rounded-full mr-2"></div>
+                                <div class="w-8 h-8 bg-green-400 rounded-full"></div>
+                            </div>
+                            <p class="text-sm">Mobal Project</p>
+                            <p class="text-xs text-gray-500">5 People</p>
+                        </div>
+                    </div>
+                    <div class="w-1/2 p-2">
+                        <div class="bg-gray-200 p-4 rounded-lg">
+                            <div class="flex items-center mb-2">
+                                <div class="w-8 h-8 bg-purple-400 rounded-full mr-2"></div>
+                                <div class="w-8 h-8 bg-orange-400 rounded-full mr-2"></div>
+                                <div class="w-8 h-8 bg-gray-400 rounded-full mr-2"></div>
+                                <div class="w-8 h-8 bg-pink-400 rounded-full"></div>
+                            </div>
+                            <p class="text-sm">Futur Project</p>
+                            <p class="text-xs text-gray-500">4 People</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="flex items-center text-gray-500">
+                    <i class="fas fa-plus mr-2"></i> Create new group
+                </button>
+            </div>
+        </aside>
+        <main class="flex-1 p-6">
+            <header class="flex items-center justify-between mb-6">
+                <div>
+                    <h1 class="text-2xl font-semibold">Good Morning, Sullivan! 👋</h1>
+                    <p class="text-gray-500">Today, Wed 6 July 2023</p>
+                </div>
+                <div class="flex items-center">
+                    <button class="flex items-center bg-gray-200 p-2 rounded-lg mr-2">
+                        <span class="mr-2">Today</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <button class="bg-gray-200 p-2 rounded-lg">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </header>
+            <div class="bg-white p-4 rounded-lg shadow-lg">
+                <ul>
+                    <li class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <input type="checkbox" class="mr-2" />
+                            <span>Read a book</span>
+                            <span class="ml-2">📚</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-gray-500 mr-4">08.00 - 09.00</span>
+                            <button class="text-gray-500">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                    </li>
+                    <li class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <input type="checkbox" class="mr-2" />
+                            <span>Wireframing new product</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-gray-500 mr-4">09.00 - 11.00</span>
+                            <button class="text-gray-500">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                    </li>
+                    <li class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <input type="checkbox" class="mr-2" />
+                            <span>Moodboard Landing Page</span>
+                            <span class="ml-2 text-blue-500"># Mobal Project</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-gray-500 mr-4">11.00 - 13.00</span>
+                            <div class="flex">
+                                <div class="w-6 h-6 bg-gray-300 rounded-full mr-1"></div>
+                                <div class="w-6 h-6 bg-gray-300 rounded-full mr-1"></div>
+                                <div class="w-6 h-6 bg-gray-300 rounded-full mr-1"></div>
+                                <div class="w-6 h-6 bg-gray-300 rounded-full mr-1"></div>
+                                <div class="w-6 h-6 bg-gray-300 rounded-full"></div>
+                            </div>
+                            <button class="text-gray-500">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                    </li>
+                    <li class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <input type="checkbox" class="mr-2" />
+                            <span>Create new task</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-gray-500 mr-4">13.00 - 14.00</span>
+                            <div class="flex">
+                                <div class="w-6 h-6 bg-gray-300 rounded-full mr-1"></div>
+                                <div class="w-6 h-6 bg-gray-300 rounded-full mr-1"></div>
+                                <div class="w-6 h-6 bg-gray-300 rounded-full mr-1"></div>
+                                <div class="w-6 h-6 bg-gray-300 rounded-full"></div>
+                            </div>
+                            <button class="text-gray-500">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                    </li>
+                    <li class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <input type="checkbox" class="mr-2" />
+                            <span>No List</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-gray-500 mr-4">14.00 - 16.00</span>
+                            <button class="text-gray-500">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                    </li>
+                    <li class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <input type="checkbox" class="mr-2" />
+                            <span>Create new list</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-gray-500 mr-4">17.00 - 18.30</span>
+                            <button class="text-gray-500">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                    </li>
+                    <li class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <input type="checkbox" class="mr-2" />
+                            <span>Create new task</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-gray-500 mr-4">19.00 - 20.00</span>
+                            <button class="text-gray-500">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="fixed bottom-0 left-0 right-0 bg-white p-4 shadow-lg">
+                <div class="flex items-center justify-between">
+                    <input
+                        type="text"
+                        class="flex-1 p-2 border border-gray-300 rounded-lg mr-2"
+                        placeholder="Create new task"
+                    />
+                    <button class="bg-black text-white p-2 rounded-lg">Create new task</button>
+                </div>
+                <div class="mt-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span>No list</span>
+                        <button class="text-gray-500">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <ul>
+                        <li class="flex items-center justify-between mb-2 cursor-pointer">
+                            <span class="flex items-center">
+                                <span class="mr-2">🏠</span>
+                                Home
+                            </span>
+                            <span>8</span>
+                        </li>
+                        <li class="flex items-center justify-between mb-2 cursor-pointer">
+                            <span class="flex items-center">
+                                <span class="mr-2">🔵</span>
+                                Personal
+                            </span>
+                            <span>4</span>
+                        </li>
+                        <li class="flex items-center justify-between mb-2 cursor-pointer">
+                            <span class="flex items-center">
+                                <span class="mr-2">🔵</span>
+                                Work
+                            </span>
+                            <span>6</span>
+                        </li>
+                        <li class="flex items-center justify-between mb-2 cursor-pointer">
+                            <span class="flex items-center">
+                                <span class="mr-2">💪</span>
+                                Diet
+                            </span>
+                            <span>3</span>
+                        </li>
+                        <li class="flex items-center justify-between mb-2 cursor-pointer">
+                            <span class="flex items-center">
+                                <span class="mr-2">📚</span>
+                                List of Book
+                            </span>
+                            <span>8</span>
+                        </li>
+                        <li class="flex items-center justify-between mb-2 cursor-pointer">
+                            <span class="flex items-center">
+                                <span class="mr-2">🚗</span>
+                                Road trip list
+                            </span>
+                            <span>6</span>
+                        </li>
+                    </ul>
+                    <button class="flex items-center text-gray-500">
+                        <i class="fas fa-plus mr-2"></i> Create new list
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

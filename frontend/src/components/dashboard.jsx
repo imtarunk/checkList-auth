@@ -63,7 +63,7 @@ const Dashboard = () => {
         </div>
         <div className='w-full'>
           <div className='flex justify-start px-5'>
-            <h1 className='text-6xl font-semibold mt-5'>Hi welcome Tarun!</h1>
+            <h1 className='text-6xl font-semibold mt-5'>Hi welcome back Tarun!</h1>
 
           </div>
           <div className='flex flex-col items-center flex-wrap'>

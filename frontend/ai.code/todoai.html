@@ -1,0 +1,282 @@
+<html>
+  <head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet" />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <div class="flex h-screen">
+      <!-- Sidebar -->
+      <div class="w-64 bg-white border-r">
+        <div class="p-4 border-b">
+          <h1 class="text-xl font-semibold">Bexley Council</h1>
+        </div>
+        <nav class="p-4">
+          <ul>
+            <li class="mb-4">
+              <a
+                href="#"
+                class="flex items-center text-gray-700 hover:text-black">
+                <i class="fas fa-tachometer-alt mr-2"></i> Overview
+              </a>
+            </li>
+            <li class="mb-4">
+              <a
+                href="#"
+                class="flex items-center text-gray-700 hover:text-black">
+                <i class="fas fa-calendar-alt mr-2"></i> Schedule
+              </a>
+            </li>
+            <li class="mb-4">
+              <a
+                href="#"
+                class="flex items-center text-gray-700 hover:text-black">
+                <i class="fas fa-briefcase mr-2"></i> Jobs
+              </a>
+            </li>
+            <li class="mb-4">
+              <a
+                href="#"
+                class="flex items-center text-gray-700 hover:text-black">
+                <i class="fas fa-tasks mr-2"></i> Todos
+              </a>
+            </li>
+            <li class="mb-4">
+              <a
+                href="#"
+                class="flex items-center text-gray-700 hover:text-black">
+                <i class="fas fa-chart-line mr-2"></i> Activity
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center text-gray-700 hover:text-black">
+                <i class="fas fa-cog mr-2"></i> Settings
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Main Content -->
+      <div class="flex-1 flex flex-col">
+        <!-- Header -->
+        <header class="flex items-center justify-between p-4 bg-white border-b">
+          <div class="flex items-center space-x-4">
+            <div class="relative">
+              <button class="flex items-center text-gray-700 hover:text-black">
+                Clients <i class="fas fa-chevron-down ml-1"></i>
+              </button>
+            </div>
+            <div class="relative">
+              <button class="flex items-center text-gray-700 hover:text-black">
+                Human Resources <i class="fas fa-chevron-down ml-1"></i>
+              </button>
+            </div>
+            <button class="text-gray-700 hover:text-black">
+              Documentation
+            </button>
+          </div>
+          <div class="flex items-center space-x-4">
+            <button class="text-gray-700 hover:text-black">
+              <i class="fas fa-search"></i>
+            </button>
+            <button class="text-gray-700 hover:text-black">
+              <i class="fas fa-bell"></i>
+            </button>
+            <button class="text-gray-700 hover:text-black">
+              <i class="fas fa-cog"></i>
+            </button>
+            <button class="text-gray-700 hover:text-black">
+              <i class="fas fa-user-circle"></i>
+            </button>
+          </div>
+        </header>
+
+        <!-- Content -->
+        <div class="flex-1 flex overflow-hidden">
+          <!-- Todos List -->
+          <div class="w-1/3 p-4 bg-white border-r overflow-y-auto">
+            <div class="mb-4">
+              <input
+                type="text"
+                placeholder="Search..."
+                class="w-full p-2 border rounded" />
+            </div>
+            <div class="space-y-4">
+              <div class="p-4 border rounded-lg hover:shadow-lg cursor-pointer">
+                <h2 class="font-semibold">Assign Job Task</h2>
+                <p class="text-sm text-gray-600">#1 First Response</p>
+                <p class="text-sm text-gray-600">
+                  Assign the job task to a staff member of a subcontractor
+                </p>
+                <p class="text-sm text-gray-600">
+                  <i class="fas fa-clock mr-1"></i> November 28, 2023 at 2:00 AM
+                  GMT
+                </p>
+              </div>
+              <div class="p-4 border rounded-lg hover:shadow-lg cursor-pointer">
+                <h2 class="font-semibold">Floor Repair</h2>
+                <p class="text-sm text-gray-600">Site Visit</p>
+                <p class="text-sm text-gray-600">
+                  Perform necessary repairs, including but not limited to
+                  patching leaks...
+                </p>
+                <p class="text-sm text-gray-600">
+                  <i class="fas fa-clock mr-1"></i> November 28, 2023 at 2:00 AM
+                  GMT
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Task Details -->
+          <div class="flex-1 p-4 overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+              <div>
+                <h2 class="text-xl font-semibold">
+                  Assign Job Task <span class="text-red-500">Urgent</span>
+                </h2>
+                <p class="text-sm text-gray-600">
+                  Assign the job task to a staff member of a subcontractor
+                </p>
+                <p class="text-sm text-gray-600">
+                  <i class="fas fa-clock mr-1"></i> November 28, 2023 at 2:00 AM
+                  GMT
+                </p>
+              </div>
+              <button class="text-gray-700 hover:text-black">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <div class="mb-4">
+              <h3 class="text-lg font-semibold">MTC001173</h3>
+              <div class="flex items-center space-x-2">
+                <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded"
+                  >Reactive Delivery</span
+                >
+                <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded"
+                  >2 hour response - 24 hour completion</span
+                >
+              </div>
+              <p class="text-sm text-gray-600 mt-2">
+                13 - Water Leak Water leak in boiler room, pressure gauge on 50
+                psi, re out of various pipes from 3 x boilers controlling hot
+                water in the depot.
+              </p>
+            </div>
+            <div class="flex space-x-4 mb-4">
+              <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded">
+                All
+              </button>
+              <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded">
+                Jobs
+              </button>
+              <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded">
+                Tasks
+              </button>
+              <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded">
+                Issues
+              </button>
+              <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded">
+                Quotes
+              </button>
+              <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded">
+                Variations
+              </button>
+              <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded">
+                Reports
+              </button>
+            </div>
+            <div class="grid grid-cols-3 gap-4">
+              <div class="col-span-2 p-4 bg-white border rounded-lg">
+                <h3 class="text-lg font-semibold mb-4">Overview</h3>
+                <div class="flex items-center space-x-4">
+                  <div class="flex-1">
+                    <div class="p-4 border rounded-lg">
+                      <h4 class="font-semibold">JOB</h4>
+                      <p class="text-sm text-gray-600">MTC001173</p>
+                    </div>
+                  </div>
+                  <div class="flex-1">
+                    <div class="p-4 border rounded-lg">
+                      <h4 class="font-semibold">TASK</h4>
+                      <p class="text-sm text-gray-600">#1 First response</p>
+                    </div>
+                  </div>
+                  <div class="flex-1">
+                    <div class="p-4 border rounded-lg">
+                      <h4 class="font-semibold">STATUS</h4>
+                      <p class="text-sm text-gray-600">Pending</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4 bg-white border rounded-lg">
+                <h3 class="text-lg font-semibold mb-4">Events</h3>
+                <ul class="space-y-4">
+                  <li class="flex items-start space-x-2">
+                    <div class="w-4 h-4 bg-green-500 rounded-full mt-1"></div>
+                    <div>
+                      <p class="text-sm font-semibold">JAN 02, 2024</p>
+                      <p class="text-sm text-gray-600">Task form Approved</p>
+                      <p class="text-sm text-gray-600">2:15 AM</p>
+                    </div>
+                  </li>
+                  <li class="flex items-start space-x-2">
+                    <div class="w-4 h-4 bg-orange-500 rounded-full mt-1"></div>
+                    <div>
+                      <p class="text-sm font-semibold">JAN 01, 2024</p>
+                      <p class="text-sm text-gray-600">
+                        Assigned to staff member Jamie Williams
+                      </p>
+                      <p class="text-sm text-gray-600">8:20 PM</p>
+                    </div>
+                  </li>
+                  <li class="flex items-start space-x-2">
+                    <div class="w-4 h-4 bg-green-500 rounded-full mt-1"></div>
+                    <div>
+                      <p class="text-sm font-semibold">JAN 01, 2024</p>
+                      <p class="text-sm text-gray-600">Job Accepted</p>
+                      <p class="text-sm text-gray-600">8:20 PM</p>
+                    </div>
+                  </li>
+                  <li class="flex items-start space-x-2">
+                    <div class="w-4 h-4 bg-gray-500 rounded-full mt-1"></div>
+                    <div>
+                      <p class="text-sm font-semibold">JAN 01, 2024</p>
+                      <p class="text-sm text-gray-600">
+                        First response task created
+                      </p>
+                      <p class="text-sm text-gray-600">8:20 PM</p>
+                    </div>
+                  </li>
+                  <li class="flex items-start space-x-2">
+                    <div class="w-4 h-4 bg-blue-500 rounded-full mt-1"></div>
+                    <div>
+                      <p class="text-sm font-semibold">JAN 01, 2024</p>
+                      <p class="text-sm text-gray-600">
+                        Job submitted by client
+                      </p>
+                      <p class="text-sm text-gray-600">8:20 PM</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,133 +1,93 @@
 const express = require("express");
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
+const cors = require("cors"); // Import CORS
+
+const { UserModule, TodoModule } = require("./db");
 
 const app = express();
 app.use(express.json());
-const port = 3000;
+const jwt_secrete = "tarunkisha";
+app.use(cors()); // Use CORS middleware
 
-const jwt_key = "hwlloworld";
-const saltRounds = 5; // salting hash password
+async function connectDB() {
+  try {
+    await mongoose.connect(
+      "mongodb+srv://sainitarunk:rb6IBbFZkddWStmO@checklist.1wc4b.mongodb.net/checklist-v1"
+    );
+    console.log("MongoDB connected");
+  } catch (error) {
+    console.error("MongoDB connection error:", error);
+    process.exit(1); // Exit with failure
+  }
+}
 
-const users = []; // To store users temporarily
+module.exports = connectDB;
+connectDB();
 
-// Signup Route
-app.post("/signup", (req, res) => {
+app.post("/signup", async (req, res) => {
   const { name, email, password } = req.body;
+  console.log(email, password, name);
 
-  if (!name || !email || !password) {
-    return res.status(400).json({
-      success: false,
-      message: "All fields are required",
-    });
-  }
-
-  // Check if the user already exists
-  const existingUser = users.find((user) => user.email === email);
-  if (existingUser) {
-    return res.status(400).json({
-      success: false,
-      message: "User already exists",
-    });
-  }
-
-  // Hash the password
-  const hash = bcrypt.hashSync(password, saltRounds);
-  console.log(hash);
-
-  // Store the user (temporary in-memory storage)
-  users.push({
-    name: name,
-    email: email,
-    password: hash,
-  });
-
-  console.log(users);
-
-  // Send response after user is successfully created
-  return res.status(201).json({
-    success: true,
-    message: `User signed up successfully with email: ${email}`,
-    users, // Optional, but you can remove this in production
-  });
-});
-
-// Login Route
-app.post("/login", (req, res) => {
-  const { email, password } = req.body;
-
-  if (!email || !password) {
-    return res.status(400).json({
-      success: false,
-      message: "All fields are required",
-    });
-  }
-
-  // Find the user by email
-  const user = users.find((u) => u.email === email);
-
-  if (!user) {
-    return res.status(404).json({
-      success: false,
-      message: "User not found",
-    });
-  }
-
-  // Compare the hashed password with the entered password
-  bcrypt.compare(password, user.password, (err, result) => {
-    if (err || !result) {
-      return res.status(401).json({
-        success: false,
-        message: "Invalid credentials",
+  try {
+    if (!name || !email || !password) {
+      return res.status(400).json({
+        message: "Entre your email and password",
       });
     }
 
-    // Generate JWT token
-    const token = jwt.sign({ email: user.email, name: user.name }, jwt_key, {
-      expiresIn: "1h", // Set token expiry
+    await UserModule.create({
+      name,
+      email,
+      password,
     });
 
-    // Send the token as response
-    return res.status(200).json({
+    res.status(200).json({
       success: true,
-      message: `Login successful as ${user.name}`,
-      token,
+      message: "user register successfully",
     });
-  });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
-// To Verify JWT (middleware example)
-const verifyToken = (req, res, next) => {
-  const token = req.headers.token; // Access directly from headers
-
-  if (!token) {
-    return res.status(403).json({
-      success: false,
-      message: "Access denied. No token provided.",
-    });
-  }
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
 
   try {
-    const verified = jwt.verify(token, jwt_key);
-    req.user = verified;
-    next();
-  } catch (err) {
-    return res.status(400).json({
-      success: false,
-      message: "Invalid token.",
+    if (!email || !password) {
+      res.json({
+        message: "Entre you register email and password",
+      });
+    }
+
+    const user = UserModule.findOne({
+      email: email,
+      password: password,
     });
+
+    if (user) {
+      const token = jwt.sign(
+        {
+          token: user._id,
+        },
+        jwt_secrete
+      );
+
+      res.status(200).json({
+        success: true,
+        message: "Logged in successfully",
+        token,
+      });
+    } else {
+      res.status(403).json({
+        message: "invalid credentials",
+        success: false,
+      });
+    }
+  } catch (error) {
+    console.log(error);
   }
-};
-
-// Example route that requires authentication
-app.get("/todos", verifyToken, (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: "This is a protected route.",
-    user: req.user,
-  });
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+app.listen(3000, () => console.log("server connected"));
