@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import LeftBar from './leftBar';
+// import LeftBar from './leftBar';
+import LeftSidebar from './LeftSidebar2'
 import { CiLocationArrow1 } from "react-icons/ci";
 import { MdOutlinePushPin } from "react-icons/md";
 import { nanoid } from 'nanoid';
@@ -58,8 +59,8 @@ const Dashboard = () => {
   return (
     <div className='flex flex-col min-h-screen border-t top-gray-900 rounded-xl'>
       <div className='flex'>
-        <div className='w-[4.5%]'>
-          <LeftBar />
+        <div>
+          <LeftSidebar />
         </div>
         <div className='w-full'>
           <div className='flex justify-start px-5'>
