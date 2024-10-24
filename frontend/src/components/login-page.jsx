@@ -9,27 +9,24 @@ export function Login() {
   const [pass, setPass] = useState("");
 
   const handleLogin = async (e) => {
-    console.log("clicked");
-
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
 
     try {
       const res = await axios.post("http://localhost:3000/login", {
         email: email,
-        password: pass, // Use pass instead of password
+        password: pass
       });
+      console.log(res.data);
 
-      if (res.status === 200) {
+      if (res.data.status === 200) {
         alert(res.data.message)
         console.log(res.data.message);
-        toast.success("Logged in successfully!");
-        // Show success message
-        < Navigate to="/" replace={true} />;
-
+        // Handle successful login (e.g., redirect or update UI)
+      } else {
+        console.error("Login failed:", res.data.message);
       }
     } catch (error) {
-      console.log(error);
-      toast.error("Login failed!"); // Show error message
+      console.error("Error during login:", error);
     }
   };
 
