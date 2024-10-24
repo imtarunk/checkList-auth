@@ -1,33 +1,40 @@
 import React, { useState } from "react";
 import { CheckSquare } from "lucide-react";
 import axios from "axios";
-import { toast } from 'react-hot-toast';
+import { toast } from "react-hot-toast";
+import { Navigate } from "react-router-dom";
 
 export function Login() {
-  const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
 
   const handleLogin = async (e) => {
-    console.log('clicked');
+    console.log("clicked");
 
     e.preventDefault(); // Prevent default form submission
+
     try {
-      const res = await axios.post('http://localhost:3000/login', {
+      const res = await axios.post("http://localhost:3000/login", {
         email: email,
-        password: pass // Use pass instead of password
+        password: pass, // Use pass instead of password
       });
+
       if (res.status === 200) {
-        console.log(res.data);
-        toast.success("Logged in successfully!"); // Show success message
+        alert(res.data.message)
+        console.log(res.data.message);
+        toast.success("Logged in successfully!");
+        // Show success message
+        < Navigate to="/" replace={true} />;
+
       }
     } catch (error) {
       console.log(error);
       toast.error("Login failed!"); // Show error message
     }
-  }
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-purple-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-purple-100 rounded-md">
       <div className="w-full max-w-md bg-white rounded-lg shadow-md overflow-hidden">
         <div className="p-6 space-y-6">
           <div className="flex items-center justify-center">
@@ -80,7 +87,7 @@ export function Login() {
           <p className="text-center text-sm text-gray-600">
             Don't have an account?{" "}
             <a
-              href="/register"
+              href="/signup"
               className="font-medium text-blue-600 hover:text-blue-500">
               Sign up
             </a>
@@ -92,27 +99,36 @@ export function Login() {
 }
 
 export function Signup() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [pass, setPass] = useState('');
-  const [passConf, setPassConf] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const [passConf, setPassConf] = useState("");
+  const [redirect, setRedirect] = useState(false); // State to handle redirection
+
 
   const handleSignup = async (e) => {
-    console.log('clicked');
     e.preventDefault();
-    console.log(name, email, pass, passConf);
 
     if (pass === passConf) {
       try {
-        const res = await axios.post('http://localhost:3000/signup', {
+        const res = await axios.post("http://localhost:3000/signup", {
           name: name,
           email: email,
-          password: pass
+          password: pass,
         });
-        if (res.data.success === true) { // Fix typo here
-          console.log(res);
+        console.log(res);
+
+        if (res.status === 200) {
           toast.success("Registered successfully!"); // Show success message
+          setRedirect(true);
+          alert(res.data.message)
+          setEmail('');
+          setName('');
+          setPass('')
+          setPassConf('')
+
         }
+
       } catch (error) {
         console.log(error);
         toast.error("Registration failed!"); // Show error message
@@ -120,10 +136,11 @@ export function Signup() {
     } else {
       toast.error("Passwords do not match!"); // Show password mismatch error
     }
-  }
+  };
+
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-purple-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-purple-100 rounded-md">
       <div className="w-full max-w-md bg-white rounded-lg shadow-md overflow-hidden">
         <div className="p-6 space-y-6">
           <div className="flex items-center justify-center">

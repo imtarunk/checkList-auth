@@ -10,9 +10,13 @@ const userSchema = new Schema({
 
 // Todo Schema
 const todoSchema = new Schema({
-  task: String,
-  status: Boolean,
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: "user", required: true },
+  todo: { type: String, required: true },
+  status: { type: Boolean, default: false }, // Default value for status
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User ",
+    required: true,
+  }, // Reference to User model
 });
 
 // Define Mongoose Models (correct method is mongoose.model)

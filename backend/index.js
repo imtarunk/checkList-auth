@@ -2,19 +2,22 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const cors = require("cors"); // Import CORS
-
+const { env } = "dotenv";
 const { UserModule, TodoModule } = require("./db");
+const Auth = require("./auth");
 
+require("dotenv").config();
 const app = express();
+
 app.use(express.json());
-const jwt_secrete = "tarunkisha";
 app.use(cors()); // Use CORS middleware
+
+const jwt_secrete = process.env.jwt_secrete;
+const PORT = process.env.port;
 
 async function connectDB() {
   try {
-    await mongoose.connect(
-      "mongodb+srv://sainitarunk:rb6IBbFZkddWStmO@checklist.1wc4b.mongodb.net/checklist-v1"
-    );
+    await mongoose.connect(process.env.uri);
     console.log("MongoDB connected");
   } catch (error) {
     console.error("MongoDB connection error:", error);
@@ -61,19 +64,17 @@ app.post("/login", async (req, res) => {
       });
     }
 
-    const user = UserModule.findOne({
+    const user = await UserModule.findOne({
       email: email,
       password: password,
     });
-
     if (user) {
       const token = jwt.sign(
         {
-          token: user._id,
+          id: user._id.toString(),
         },
         jwt_secrete
       );
-
       res.status(200).json({
         success: true,
         message: "Logged in successfully",
@@ -90,4 +91,44 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log("server connected"));
+app.post("/todo", Auth, async (req, res) => {
+  const userId = req.usedId;
+  const todo = req.body;
+
+  if (!todo) {
+    console.log("todo required");
+  }
+
+  const newTodo = await TodoModule.create({
+    todo: todo.todo, // Accessing the todo description
+    userId: userId,
+    status: false, // Optionally set the default status
+    date: new Date(), // Optionally add a date field
+  });
+  console.log(newTodo);
+  return res.status(201).json({
+    success: true,
+    message: "Todo created successfully",
+    todo: newTodo,
+  });
+});
+
+app.get("/todos", Auth, async (req, res) => {
+  const userid = req.usedId;
+
+  const todoOfLoggedUser = await TodoModule.find({ userId: userid });
+
+  if (todoOfLoggedUser.length === 0) {
+    return res.status(404).json({
+      message: "No todos found for this user",
+    });
+  }
+
+  return res.status(200).json({
+    message: "todo fetching successfully",
+    success: true,
+    todos: todoOfLoggedUser,
+  });
+});
+
+app.listen(PORT, () => console.log("server connected"));

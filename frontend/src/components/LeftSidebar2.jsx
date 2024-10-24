@@ -30,7 +30,7 @@ export default function LeftSidebar() {
                   <List className="w-5 h-5 mr-3" />
                   <span>{list.name}</span>
                 </div>
-                <span className="bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs">
+                <span className=" text-gray-700 px-2 py-1 rounded-full text-xs">
                   {list.count}
                 </span>
               </button>
@@ -47,27 +47,27 @@ export default function LeftSidebar() {
       </div>
 
       <div className="p-4 border-t border-gray-200">
-        <ul className="space-y-2">
+        <ul className="space-y-2 hover:no-underline">
           <li>
-            <a href="#" className="flex items-center p-2 text-gray-700 hover:bg-green-400 rounded-md">
+            <a href="#" className="flex items-center p-2 text-gray-700 hover:bg-green-400 rounded-md no-underline hover:no-underline">
               <Home className="w-5 h-5 mr-3" />
               <span>Home</span>
             </a>
           </li>
           <li>
-            <a href="#" className="flex items-center p-2 text-gray-700 hover:bg-green-400 rounded-md">
+            <a href="#" className="flex items-center p-2 text-gray-700 hover:bg-green-400 rounded-md hover:no-underline">
               <Calendar className="w-5 h-5 mr-3" />
               <span>Calendar</span>
             </a>
           </li>
           <li>
-            <a href="#" className="flex items-center p-2 text-gray-700 hover:bg-green-400 rounded-md">
+            <a href="#" className="flex items-center p-2 text-gray-700 hover:bg-green-400 rounded-md hover:no-underline">
               <Settings className="w-5 h-5 mr-3" />
               <span>Settings</span>
             </a>
           </li>
           <li>
-            <a href="#" className="flex items-center p-2 text-gray-700 hover:bg-green-400 rounded-md">
+            <a href="#" className="flex items-center p-2 text-gray-700 hover:bg-green-400 rounded-md hover:no-underline">
               <LogOut className="w-5 h-5 mr-3" />
               <span>Logout</span>
             </a>
